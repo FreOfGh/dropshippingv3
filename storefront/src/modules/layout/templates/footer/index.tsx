@@ -53,25 +53,24 @@ export default async function Footer() {
             )}
 
             {collections && collections.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus text-[#D4AF37] uppercase tracking-wider">
-                  Colecciones
-                </span>
-                <ul className={clx("grid grid-cols-1 gap-2 text-gray-400 txt-small")}>
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-white transition-colors"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </li>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
+  <div className="flex flex-col gap-y-2">
+    <span className="txt-small-plus text-[#D4AF37] uppercase tracking-wider">
+      Colecciones
+    </span>
+    <ul className={clx("grid grid-cols-1 gap-2 text-gray-400 txt-small")}>
+      {collections?.slice(0, 6).map((c) => (
+        <li key={c.id}>
+          <LocalizedClientLink
+            className="hover:text-white transition-colors"
+            href={`/collections/${c.handle}`}
+          >
+            {c.title}
+          </LocalizedClientLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
             <div className="flex flex-col gap-y-2">
               <span className="txt-small-plus text-[#D4AF37] uppercase tracking-wider">Ayuda</span>
               <ul className="grid grid-cols-1 gap-y-2 text-gray-400 txt-small">
