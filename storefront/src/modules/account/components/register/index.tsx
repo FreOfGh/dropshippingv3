@@ -1,7 +1,6 @@
 "use client"
 
 import { useFormState } from "react-dom"
-
 import Input from "@modules/common/components/input"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
@@ -18,32 +17,34 @@ const Register = ({ setCurrentView }: Props) => {
 
   return (
     <div
-      className="max-w-sm flex flex-col items-center"
+      className="max-w-sm w-full flex flex-col items-center bg-white p-8 md:p-12 shadow-sm border border-gray-100"
       data-testid="register-page"
     >
-      <h1 className="text-large-semi uppercase mb-6">
-        Become a Medusa Store Member
+      <h1 className="text-2xl-semi uppercase mb-2 tracking-tighter text-black text-center">
+        Únete a Sara Store
       </h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-4">
-        Create your Medusa Store Member profile, and get access to an enhanced
-        shopping experience.
+      <p className="text-center text-base-regular text-ui-fg-subtle mb-8">
+        Crea tu perfil de miembro y accede a lanzamientos exclusivos y una experiencia de compra personalizada.
       </p>
+      
       <form className="w-full flex flex-col" action={formAction}>
-        <div className="flex flex-col w-full gap-y-2">
-          <Input
-            label="First name"
-            name="first_name"
-            required
-            autoComplete="given-name"
-            data-testid="first-name-input"
-          />
-          <Input
-            label="Last name"
-            name="last_name"
-            required
-            autoComplete="family-name"
-            data-testid="last-name-input"
-          />
+        <div className="flex flex-col w-full gap-y-4">
+          <div className="grid grid-cols-2 gap-x-4">
+            <Input
+              label="Nombre"
+              name="first_name"
+              required
+              autoComplete="given-name"
+              data-testid="first-name-input"
+            />
+            <Input
+              label="Apellido"
+              name="last_name"
+              required
+              autoComplete="family-name"
+              data-testid="last-name-input"
+            />
+          </div>
           <Input
             label="Email"
             name="email"
@@ -53,14 +54,14 @@ const Register = ({ setCurrentView }: Props) => {
             data-testid="email-input"
           />
           <Input
-            label="Phone"
+            label="Teléfono"
             name="phone"
             type="tel"
             autoComplete="tel"
             data-testid="phone-input"
           />
           <Input
-            label="Password"
+            label="Contraseña"
             name="password"
             required
             type="password"
@@ -68,37 +69,43 @@ const Register = ({ setCurrentView }: Props) => {
             data-testid="password-input"
           />
         </div>
+
         <ErrorMessage error={message} data-testid="register-error" />
-        <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to Medusa Store&apos;s{" "}
+        
+        <span className="text-center text-ui-fg-subtle text-small-regular mt-6 leading-relaxed">
+          Al crear una cuenta, aceptas las{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
-            className="underline"
+            className="underline decoration-[#D4AF37] hover:text-[#D4AF37]"
           >
-            Privacy Policy
+            Políticas de Privacidad
           </LocalizedClientLink>{" "}
-          and{" "}
+          y los{" "}
           <LocalizedClientLink
             href="/content/terms-of-use"
-            className="underline"
+            className="underline decoration-[#D4AF37] hover:text-[#D4AF37]"
           >
-            Terms of Use
+            Términos de Uso
           </LocalizedClientLink>
           .
         </span>
-        <SubmitButton className="w-full mt-6" data-testid="register-button">
-          Join
+
+        <SubmitButton 
+          className="w-full mt-6 bg-black hover:bg-[#D4AF37] text-white transition-all duration-300 uppercase tracking-widest h-12" 
+          data-testid="register-button"
+        >
+          Crear Cuenta
         </SubmitButton>
       </form>
-      <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Already a member?{" "}
+
+      <span className="text-center text-ui-fg-subtle text-small-regular mt-8">
+        ¿Ya eres miembro?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
-          className="underline"
+          className="text-small-semi uppercase tracking-widest underline decoration-[#D4AF37] underline-offset-4 hover:text-[#D4AF37] transition-colors"
         >
-          Sign in
+          Iniciar Sesión
         </button>
-        .
       </span>
     </div>
   )
